@@ -2,6 +2,8 @@
 layout:  post
 title:   Повышаем производительность рендера списков в React-компонентах
 date:    2016-07-28 23:00:00
+author:  felix_exter
+authorLink: https://twitter.com/felix_exter
 ---
 
 ![image](/images/react.png)
@@ -132,7 +134,7 @@ import ListItem from './item'
 @pure
 export default class List extends Component {
 	// ...
-	
+
 	renderItem = ({ id, name, value }) =>
 		<ListItem
 			key={id}
@@ -141,7 +143,7 @@ export default class List extends Component {
 			value={value}
 			onClick={this.props.onClick}
 		/>
-	
+
 	render() {
 		return <div styleName='list'>
 			{this.props.items.map(this.renderItem)}
@@ -164,10 +166,10 @@ export default class ListItem extends Component {
 	// ...
 
 	onClick = () => this.props.onClick(this.props.id)
-	
+
 	render() {
 		const { id, name, value } = this.props
-		
+
 		return <div styleName='item'>
 			<Item
 				name={name}
@@ -192,7 +194,7 @@ function Item({ name, value }) {
 	</div>
 }
 
-export default pure(css(Item, styles))	
+export default pure(css(Item, styles))
 ```
 
 Вот так готовятся компоненты в нашей кухне.

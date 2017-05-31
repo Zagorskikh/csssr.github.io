@@ -9,7 +9,14 @@ layout: default
 
 <div class="post-header mb2">
 	<h1>{{ page.title }}</h1>
-	<span class="post-meta">{{ page.date | date: "%b %-d, %Y" }}</span><br>
+	<span class="post-meta">
+		{{ page.date | date: "%b %-d, %Y" }}
+		{% if page.author and page.authorLink %}
+			by <a target="_blank" class="post-author" rel="author" href="{{ page.authorLink }}">{{ page.author }}</a>
+		{% elsif page.author %}
+			by <span class="post-author">{{ page.author }}</a>
+		{% endif %}
+	</span><br>
 	{% if page.update_date %}
 		<span class="post-meta">Updated: {{ page.update_date | date: "%b %-d, %Y" }}</span><br>
 	{% endif %}

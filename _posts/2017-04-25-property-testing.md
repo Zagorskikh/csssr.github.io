@@ -2,6 +2,8 @@
 layout:  post
 title:   Какие ваши доказательства?
 summary: Пробуем искать и проверять свойства программ при помощи генеративного тестирования
+author: bracketsarrows
+authorLink: https://twitter.com/bracketsarrows
 ---
 
 Всем привет. Меня зовут Андрей, и сегодня я хотел бы обсудить тему оценки и доказательства свойств программных решений.
@@ -165,9 +167,9 @@ gen.returnOneOf(['sibling', 'child', 'parent', 'spouse'])
 Для `dependant` используем генераторы <a target="_blank" href="https://github.com/leebyron/testcheck-js/blob/master/type-definitions/testcheck.d.ts#L331">gen.boolean</a>, <a target="_blank" href="https://github.com/leebyron/testcheck-js/blob/master/type-definitions/testcheck.d.ts#L329">gen.undefined</a>, скомбинировав их при помощи <a target="_blank" href="https://github.com/leebyron/testcheck-js/blob/master/type-definitions/testcheck.d.ts#L208">gen.oneOf</a>:
 
 ```javascript
-// oneOf принимает несколько генераторов и возврашается генератор который 
+// oneOf принимает несколько генераторов и возврашается генератор который
 // случайным образом использует то один то другой генератор
-gen.oneOf([gen.boolean, gen.undefined]) 
+gen.oneOf([gen.boolean, gen.undefined])
 ```
 
 Для `fio` используем <a target="_blank" href="https://github.com/leebyron/testcheck-js/blob/master/type-definitions/testcheck.d.ts#L297">gen.object</a> в комбинации с <a target="_blank" href="https://github.com/leebyron/testcheck-js/blob/master/type-definitions/testcheck.d.ts#L383">gen.string</a>, <a target="_blank" href="https://github.com/leebyron/testcheck-js/blob/master/type-definitions/testcheck.d.ts#L329">gen.undefined</a>:
@@ -325,7 +327,7 @@ check.it(
 Однако проверка нашего свойства заканчивается безуспешно:
 
 ```diff
-● convertFrom and convertTo properties 
+● convertFrom and convertTo properties
   › convertFrom -> convertTo save original shape (
     {"type":"single","members":[{"role": "sibling", "fio": {}}]}
   )
@@ -451,7 +453,7 @@ export const genSpec = {
 Далее необходимо реализовать сами обертки, которые будут добавлять необходимые методы. Так как большая часть кода и для валидатора, и для генератора будет общей – вынесем ее в функцию `makeSpecable`. Она будет принимать 2 функции, которые уже будут содержать логику, специфичную для генератора или валидатора:
 
  - `makeNotRequired` — определит, как сделать из того, что нам передали, необязательный генератор/валидатор.
-  
+
 Здесь все довольно просто. Для валидатора:
 
 ```javascript
@@ -509,7 +511,7 @@ describe('convertFrom and convertTo properties', () => {
   });
 });
 ```
-Ура, заработало! <a target="_blank" href="https://gist.github.com/typeetfunc/ac4ed98d5014870c797ce138796f5cc4">Гист с полным кодом</a>  
+Ура, заработало! <a target="_blank" href="https://gist.github.com/typeetfunc/ac4ed98d5014870c797ce138796f5cc4">Гист с полным кодом</a>
 
 Вообще, идея иметь одно описание данных и по нему получать и валидаторы, и генераторы придумана, конечно же, не мной.
 Именно на этом базируется довольно новая технология – <a target="_blank" href="http://clojure.org/about/spec">clojure.spec</a>, которая, в свою очередь, черпала вдохновение из <a target="_blank" href="http://docs.racket-lang.org/guide/contracts.html">системы контрактов Racket</a>.
@@ -600,7 +602,7 @@ type nat = {v : number | 0 ≤ v }
 
 Иногда начинающие разработчики (такие, как я, например) при возникновении проблемы сразу бросаются писать код, который ее решает. Зачастую стоит сначала подумать: «может, проблему можно решить совсем на другом уровне?». Например, лучше разбить API модуля согласно тому, какие гарантии нам предоставляют те или иные вызовы – как в нашем случае.
 
-По традиции, для тех, кто недостаточно устал от чтения моей статьи, дам небольшое «домашнее задание»: какому свойству может удовлетворять функция `setDefault`? Напомню, что эта функция проставляет значения по умолчанию в структуре данных, если значения отсутствуют. 
+По традиции, для тех, кто недостаточно устал от чтения моей статьи, дам небольшое «домашнее задание»: какому свойству может удовлетворять функция `setDefault`? Напомню, что эта функция проставляет значения по умолчанию в структуре данных, если значения отсутствуют.
 
 ### В чем сложности?
 
