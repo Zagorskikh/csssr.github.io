@@ -17,7 +17,7 @@
 	content="ru_RU">
 	<meta property="og:type" content="article">
 	<meta property="og:title" content="{% if page.title %}{{ page.title }}{% else %}{{ site.title }}{% endif %}">
-	<meta property="og:description" content="{% if page.description %}{{ page.description }}{% else %}{{ site.description }}{% endif %}">
+	<meta property="og:description" content="{% if page.summary %}{{ page.summary }}{% else %}{{ site.description }}{% endif %}">
 	<meta property="og:url" content="{{ site.url }}{{ page.url }}">
 	<meta property="og:site_name" content="{{ site.title }}">
 
@@ -38,7 +38,7 @@
 	<link sizes="16x16" href="/favicon-16x16.png" rel="icon" type="image/png">
 	<link sizes="32x32" href="/favicon-32x32.png" rel="icon" type="image/png">
 	<meta name="application-name" content="{% if page.title %}{{ page.title }}{% else %}{{ site.title }}{% endif %}">
-	<meta name="msapplication-tooltip" content="{% if page.description %}{{ page.description }}{% else %}{{ site.description }}{% endif %}">
+	<meta name="msapplication-tooltip" content="{% if page.summary %}{{ page.summary }}{% else %}{{ site.description }}{% endif %}">
 	<meta name="msapplication-TileColor" content="#ffffff">
 	<meta name="msapplication-TileImage" content="/mstile-large.png">
 	<meta name="msapplication-starturl" content="{{ site.url }}{{ page.url }}">
