@@ -28,6 +28,11 @@ img {
   margin: 0 auto;
 }
 
+a img {
+  display: inline;
+  margin: initial;
+}
+
 .site-wrap {
   min-height: 100%;
   margin-bottom: -120px;
