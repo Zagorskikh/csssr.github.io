@@ -37,11 +37,11 @@
 	<link sizes="96x96" href="/favicon-96x96.png" rel="icon" type="image/png">
 	<link sizes="16x16" href="/favicon-16x16.png" rel="icon" type="image/png">
 	<link sizes="32x32" href="/favicon-32x32.png" rel="icon" type="image/png">
-	<meta name="application-name" content="CSSSR Project Template">
-	<meta name="msapplication-tooltip" content="A template for a quick start.">
+	<meta name="application-name" content="{% if page.title %}{{ page.title }}{% else %}{{ site.title }}{% endif %}">
+	<meta name="msapplication-tooltip" content="{% if page.description %}{{ page.description }}{% else %}{{ site.description }}{% endif %}">
 	<meta name="msapplication-TileColor" content="#ffffff">
 	<meta name="msapplication-TileImage" content="/mstile-large.png">
-	<meta name="msapplication-starturl" content="https://csssr.github.io/csssr-project-template/">
+	<meta name="msapplication-starturl" content="{{ site.url }}{{ page.url }}">
 	<meta name="msapplication-tap-highlight" content="no">
 	<meta name="msapplication-square70x70logo" content="/mstile-small.png">
 	<meta name="msapplication-square150x150logo" content="/mstile-medium.png">
