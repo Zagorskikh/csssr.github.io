@@ -391,6 +391,10 @@ h6,
 .header-link {
   font-weight: bold !important;
 
+  &_active {
+    color: #333 !important;
+  }
+
   &:not(:first-child) {
     margin-left: 10px;
   }
